@@ -1,0 +1,253 @@
+﻿@model Telemedicina.Models.Agenda.CitaEnd
+@{
+
+}
+
+<div class="docdatos">
+    <div video-grid>
+    </div>
+
+    @if (@ViewBag.rango == "D")
+    {
+        <div class="zonadatos">
+            <div class="cuadrodatos">
+                <label class="tnombre">Nombre: @Model.PacienteName</label>
+                <div class="info">
+                    <div class="solodato">
+                        <label>Edad:</label>
+                        <label>@Model.PaciEdad</label>
+                    </div>
+                    <div class="solodato">
+                        <label>Ocupacion:</label>
+                        <label>@Model.PaciOcupa</label>
+                    </div>
+                    <div class="solodato">
+                        <label>Sexo:</label>
+                        <label>@Model.PacienteSex</label>
+                    </div>
+                    <div class="solodato">
+                        <label>Hereditario:</label>
+                        <label>@Model.PaciHere</label>
+                    </div>
+                </div>
+                <label class="tmotivo">Motivo: @Model.MotivoCita</label>
+            </div>
+
+            <div class="variablesdatos">
+                <label class="tnombre">Datos Vitales</label>
+                <div class="info2">
+                    <div class="solodato2">
+                        <label>Temperatura: </label>
+                        <label id="temp">32°</label>
+                    </div>
+                    <div class="solodato2">
+                        <label>Presion Arterial: </label>
+                        <label id="presion">110</label>
+                    </div>
+                    <div class="solodato2">
+                        <label>Peso: </label>
+                        <label id="peso">95kg</label>
+                    </div>
+                    <div class="solodato2">
+                        <label>Ritmo Cardiaco: </label>
+                        <label id="ritmo">80</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="histocont">
+            <h1>Historial</h1>
+            <div class="hlist">
+                @if(Model.Historial != null)
+                {
+                    @foreach (var historial in Model.Historial)
+                    {
+                        <div class="histoblock">
+                            <h2 class="htittle">Dia @historial.fecha.ToString("dd-MM-yyyy")</h2>
+                            <div class="hdiag">
+                                <h2>Diagnostico:</h2>
+                                <p>
+                                    @if(historial.diagnostico != null)
+                                    {
+                                        @historial.diagnostico
+                                    }
+
+                                </p>
+                            </div>
+                            <br>
+                            @if(historial.Receta == null)
+                            {
+                                <p>No se le receto receta</p>
+                            } else
+                            {
+                                @foreach (var receta in historial.Receta)
+                                {
+                                    <div class="hrece">
+                                        <h2>Receta:</h2>
+                                        <p>@receta.prescripcion</p>
+                                        @foreach (var item in receta.Items)
+                                        {
+                                            <p>- @item.Medicamento,@item.Dosis,@item.Fecuencia</p>
+                                        }
+                                    </div>
+                                }
+                            }
+                            
+                        </div>
+                    }
+                } else
+                {
+                    <p>El Paciente no tiene historial aun</p>
+                }
+                
+                
+            </div>
+            
+        </div>
+
+
+        <div class="roombox">
+            <div class="comentario">
+                <p>Diagnostico</p>
+                <textarea type="text" class="textocomentario" id="txtdiagnostico" rows="10" cols="50"></textarea>
+                <p id="txtadig"></p>
+                <button class="btn btn-primary" id="btnSaveDiagnostico">Guardar Diagnostico</button>
+            </div>
+            <div class="receta">
+                <p>Caja Receta</p>
+                <p id="txtreceta"></p>
+                <div>
+                    <button id="btn-CrearReceta" class="btn btn-primary">Crear receta</button>
+                    <div id="modal">
+                        <div class="modal_container">
+                            <div class="modal_close_button_container">
+                                <h2>Receta</h2>
+                                <button onclick="ocultarModal()">X</button>
+                            </div>
+                            <div class="presszone">
+                                <p>Prescripcion</p>
+                                <textarea class="press" type="text" id="txtprescripcion" placeholder="Coloque su Prescripcion aqui" rows="10" cols="50"></textarea>
+                            </div>
+                            <div class="modal_row_container">
+                            </div>
+                            <div class="modal_centered_button_container">
+                                <button class="modal_button" id="btnAddElement">
+                                    Agregar medicamento
+                                </button>
+                                <button class="save_modal_button" id="btnSaveReceta">
+                                    Guardar receta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form method="post" action="Finalizar">
+            <input type="hidden" class="form-control" asp-for="roomId" value="@ViewBag.roomId">
+            <button type="submit" class="btn btn-primary">Finalizar Consulta</button>
+        </form>
+
+        <script src="~/js/diagnostico.js"></script>
+        <script src="~/js/receta.js"></script>
+    }
+    
+</div>
+
+@if (@ViewBag.rango == "A")
+{
+    
+}
+
+<div class="recetabox" id="recetabox">
+
+</div>
+
+<script src="~/js/hayreceta.js"></script>
+<script src="https://unpkg.com/qrious@4.0.2/dist/qrious.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+<script src="https://unpkg.com/peerjs@1.3.2/dist/peerjs.min.js"></script>
+<script>
+
+    const ROOM_ID = '@ViewBag.roomId'
+    let usedId = null
+    let localStream = null
+    const Peers = {}
+
+    const connection = new signalR.HubConnectionBuilder().withUrl("/meeting").build();
+
+    const myPeer = new Peer()
+
+    myPeer.on('open', id => {
+        userId = id;
+
+        const startSignalR = async () => {
+            await connection.start();
+            await connection.invoke("JoinRoom", ROOM_ID , userId)
+
+        }
+        startSignalR();
+    })
+
+    const videoGrid = document.querySelector('[video-grid]')
+    const myVideo = document.createElement('video')
+    myVideo.muted = true;
+
+    navigator.mediaDevices.getUserMedia({
+        audio : true,
+        video : true
+    }).then(stream => {
+        addVideoStream(myVideo, stream)
+
+        localStream = stream
+    })
+
+    connection.on('user-connected', id => {
+        if (userId === id) return;
+
+        console.log(`User connected : ${id}`)
+        connectNewUser(id, localStream)
+    })
+
+    connection.on('user-disconnected', id => {
+        console.log(`User disconnected : ${id}`)
+
+        if(Peers[id]) Peers[id].close();
+    })
+
+    myPeer.on('call', call => {
+        call.answer(localStream)
+
+        const userVideo = document.createElement('video')
+        call.on('stream', userVideoStream => {
+            addVideoStream(userVideo, userVideoStream)
+        })
+    })
+
+    const addVideoStream = (video, stream) => {
+        video.srcObject = stream;
+        video.addEventListener('loadedmetadata', () => {
+            video.play()
+        })
+        videoGrid.appendChild(video)
+    }
+
+    const connectNewUser = (userId, localStream) => {
+        const userVideo = document.createElement('video')
+        const call = myPeer.call(userId, localStream)
+
+        call.on('stream', userVideoStream => {
+            addVideoStream(userVideo, userVideoStream)
+        })
+
+        call.on('close', () => {
+            userVideo.remove()
+        })
+
+        Peers[userId] = call
+    }
+
+</script>

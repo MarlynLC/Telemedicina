@@ -1,0 +1,61 @@
+﻿@model List<Telemedicina.Models.Dominio.AsistenteLocal>
+@{
+    ViewData["Title"] = "Asistente Local";
+}
+
+<h1>Asistentes Locales</h1>
+<a class="nav-link text-dark" asp-area="" asp-controller="AsistenteLocal" asp-action="agregarasistentelocal">Agregar Asistente Local</a>
+<br />
+@if (ViewBag.Message != null)
+{
+    <span style="color:darkseagreen">@ViewBag.Message</span>
+}
+
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Imagen</th>
+            <th>Asistente Local</th>
+            <th>Sexo</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Tipo de Sangre</th>
+            <th>CURP</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+            <th>Matricula</th>
+            <th>Especialidad</th>
+            <th>Jerarquia</th>
+            <th>Fecha de Ingreso</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null){
+            @foreach (var asistentelocal in Model)
+            {
+                if (asistentelocal.Visilbe == "Si")
+                {
+                    <tr>
+                        <th><a href="AsistenteLocal/modificarasistentelocal/@asistentelocal.Id">Modificar</a></th>
+                        <th><img src="@asistentelocal.Imagen" width="50" height="50" /></th>
+                        <th>@asistentelocal.Nombre @asistentelocal.Apellidos</th>
+                        <td>@asistentelocal.Sexo</td>
+                        <td>@asistentelocal.Nacimiento.ToString("dd-MM-yyyy")</td>
+                        <th>@asistentelocal.Sangre</th>
+                        <th>@asistentelocal.Curp</th>
+                        <td>@asistentelocal.Telefono</td>
+                        <td>@asistentelocal.Correo</td>
+                        <td>@asistentelocal.Matricula</td>
+                        <th>@asistentelocal.Especialidad</th>
+                        <td>@asistentelocal.Jerarquia</td>
+                        <td>@asistentelocal.FechaIngreso.ToString("dd-MM-yyyy")</td>
+                        <th>@asistentelocal.Password</th>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+</div>

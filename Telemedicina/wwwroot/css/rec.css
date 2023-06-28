@@ -1,0 +1,157 @@
+﻿.recetaBox {
+    border: 1px dashed black;
+    padding: 10px;
+    width: 800px;
+}
+
+.rdocdatos {
+    padding: 0;
+    margin-top: 5px;
+    width: 600px;
+}
+
+.rdocname {
+    display: block;
+    position: relative;
+    right: auto;
+    left: 50%;
+}
+
+    .rdocname h1 {
+        font-size: 20px;
+    }
+
+.rdocinfo {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding: 0px;
+    width: 500px;
+    display: block;
+    position: relative;
+    right: auto;
+}
+
+.rdocrang {
+    display: block;
+    position: absolute;
+    right: auto;
+    left: 30%;
+}
+
+.rdoccelu {
+    display: block;
+    position: relative;
+    right: auto;
+    left: 90%;
+}
+
+.rdocinfoescue {
+    display: block;
+    position: relative;
+    right: auto;
+    left: 50%;
+}
+
+.rdocinfo p {
+    margin: 5px;
+}
+
+.rpasdatos {
+    border-top: 1px solid black;
+    width: 600px;
+    padding: 0px;
+    display: block;
+    position: relative;
+    right: auto;
+    left: 10%;
+}
+
+.rpassinfo {
+    display: block;
+    position: relative;
+    right: auto;
+    left: 10%;
+}
+
+.rpassinfo p {
+    margin-bottom: 0px;
+}
+
+.rpasnom {
+    font-weight: bold;
+    display: block;
+    position: relative;
+}
+
+.rpasedad {
+    margin-top: 0;
+    display: block;
+    position: relative;
+}
+
+.rrecfe {
+    display: block;
+    position: absolute;
+    left: 70%;
+    
+}
+
+.rrecdatos {
+    margin-top: 20px;
+    width: 600px;
+    position: relative;
+    right: auto;
+    left: 10%;
+}
+
+.rrecinfomeds {
+    position: relative;
+    right: auto;
+    left: 20%;
+}
+
+.rrecinfomeds p {
+    margin: 2px;
+}
+
+.rrecinfopres {
+    margin-top: 10px;
+    position: relative;
+    right: auto;
+    left: 5%;
+}
+
+    .rrecinfopres p {
+        margin: 0;
+    }
+
+.rmodulo {
+    margin-top: 20px;
+    width: 600px;
+    position: relative;
+    right: auto;
+    left: 10%;
+}
+
+.rmoduInfo {
+    position: absolute;
+    right: auto;
+    left: 10%;
+}
+
+.rdocfirma {
+    margin-top: 0;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    right: auto;
+    left: 70%;
+}
+
+.rrecfecha {
+    display: block;
+    position: relative;
+    margin-right: 0;  
+    margin-left: auto;
+}

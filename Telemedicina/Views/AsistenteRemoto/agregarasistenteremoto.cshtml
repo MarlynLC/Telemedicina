@@ -1,0 +1,113 @@
+﻿@model Telemedicina.Models.AsistenteRemotoFormularios.agregarasistenteremotoViewModel
+@{
+    ViewData["Title"] = "Agregar Asistente Remoto";
+}
+
+<div class="contenformu">
+    <header>Agregar a un Asistente Remoto</header>
+
+    <form method="post" action="agregarasistenteremoto" class="mt-5" enctype="multipart/form-data">
+        <div class="datospersona">
+            <span class="tittle">Datos Personales</span>
+
+            <div class="fields">
+                <div class="input-field">
+                    <label for="" class="form-label">Nombres</label>
+                    <input type="text" class="" asp-for="Nombre" placeholder="Pablo Miguel" />
+                    <span asp-validation-for="Nombre" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Apellidos</label>
+                    <input type="text" class="" asp-for="Apellidos" placeholder="Lopez Portillo" />
+                    <span asp-validation-for="Apellidos" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Sexo</label>
+                    <select class="" asp-for="Sexo">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Tipo de Sangre</label>
+                    <select class="" asp-for="Sangre">
+                        <option value="No se conoce">No se conoce</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="formontrol" asp-for="Nacimiento">
+                    <span asp-validation-for="Nacimiento" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">CURP</label>
+                    <input type="text" class="" asp-for="Curp" placeholder="AAAA111111AAAAAA4">
+                    <span asp-validation-for="Curp" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Numero de Telefono</label>
+                    <input type="text" class="" asp-for="Telefono" placeholder="1234567890">
+                    <span asp-validation-for="Telefono" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Correo Electronico</label>
+                    <input type="email" class="" asp-for="Correo" placeholder="correo@hotmail.com">
+                    <span asp-validation-for="Correo" style="color:red"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="datospersona">
+            <span class="tittle">Datos Laborales</span>
+
+            <div class="fields">
+                <div class="input-field">
+                    <label for="" class="form-label">Comentarios</label>
+                    <input type="text" class="" asp-for="Comentarios">
+                    <span asp-validation-for="Comentarios" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Contraseña</label>
+                    <input type="text" class="" asp-for="Password">
+                    <span asp-validation-for="Password" style="color:red"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="datospersona">
+            <span class="tittle">Imagen del Asistente</span>
+
+            <div class="fields">
+                <div class="input-field">
+                    <span style="color:red">Solo formato .jpg</span>
+                    <br />
+                    <input type="file" class="" asp-for="File" required>
+                    <span asp-validation-for="File" style="color:red">@ViewBag.Message</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="botones">
+            <div class="datospersona">
+                <div class="fields">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+
+                    <button type="post" class="btn btn-secondary" asp-controller="AsistenteRemoto" asp-action="back">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+

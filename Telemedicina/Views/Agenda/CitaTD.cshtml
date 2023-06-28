@@ -1,0 +1,43 @@
+﻿@model Telemedicina.Models.Agenda.CitaTemp
+@{
+}
+
+<h1>Solicitar una Cita Medica</h1>
+<form method="post" action="CitaTD" class="mt-5">
+
+    <div class="formu">
+        <input type="hidden" class="" asp-for="ComplejoId">
+        @if(Model != null)
+        {
+            <label for="" class="form-label">Nombre Paciente:</label>
+            <select class="" asp-for="PacienteId">
+                @foreach (var paciente in Model.Pacientes)
+                {
+                    <option value="@paciente.Id">@paciente.Nombre @paciente.Apellidos</option>
+                }
+            </select>
+        } else
+        {
+            <span style="color:red">No hay Pacientes, Agrege uno para poder hacer esta parte</span>
+        }
+
+        <br />
+
+        <label for="" class="form-label">Fecha Solicitada</label>
+        <input type="date" class="" asp-for="Fecha">
+        <span asp-validation-for="Fecha" style="color:red"></span>
+        <br />
+
+        <label for="" class="form-label">Comentario</label>
+        <input type="text" class="" asp-for="Comentarios"/>
+        <span asp-validation-for="Comentarios" style="color:red"></span>
+        <br />
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Vincular</button>
+
+    <button type="post" class="btn btn-secondary" asp-controller="Agenda" asp-action="back">
+        Cancelar
+    </button>
+</form>

@@ -1,0 +1,42 @@
+﻿@model List<Telemedicina.Models.Agenda.CitaTemp>
+@{
+}
+
+@if (ViewBag.Message != null)
+{
+    <span style="color:darkseagreen">@ViewBag.Message</span>
+}
+<h1>Citas Solicitadas</h1>
+
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Estado</th>
+            <th>Dia de Registro</th>
+            <th>Dia Solicitado</th>
+            <th>Paciente</th>
+            <th>Comentario</th>
+            <th>Complejo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var citatemporal in Model)
+            {
+                <tr>
+                    <th><a href="/Agenda/CitasM/@citatemporal.Id">Revizar</th>
+                    <th>@citatemporal.Estado</th>
+                    <th>@citatemporal.FechaCreacion.ToString("dd-MM-yyyy")</th>
+                    <td>@citatemporal.Fecha.ToString("dd-MM-yyyy")</td>
+                    <th>@citatemporal.NombrePaciente</th>
+                    <th>@citatemporal.Comentarios</th>
+                    <th>@citatemporal.NombreComplejo</th>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+</div>

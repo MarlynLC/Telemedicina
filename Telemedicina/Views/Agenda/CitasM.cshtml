@@ -1,0 +1,105 @@
+﻿@model Telemedicina.Models.Agenda.CitaFinalF
+@{
+}
+<h1>Solicitar una Cita Medica</h1>
+<div class="vacm">
+
+    <div class="formuagenda">
+        <form method="post" action="CitasM" class="">
+            @if (ViewBag.Message != null)
+            {
+                <span style="color:red">@ViewBag.Message</span>
+            }
+            
+            <input type="hidden" class="" asp-for="Id">
+
+            <label for="" class="form-label">Asistente Remoto: @Model.NombreAsistenteRemoto</label>
+            <input type="hidden" class="" asp-for="AsistenteRemotoId">
+            <br />
+
+            <label for="" class="form-label">Paciente: @Model.NombrePaciente</label>
+            <input type="hidden" class="" asp-for="PacienteId">
+            <br />
+
+            <label for="" class="form-label">Complejo: @Model.NombreComplejo</label>
+            <input type="hidden" class="" asp-for="ComplejoId">
+            <br />
+
+            <label for="" class="form-label">Nombre Paciente:</label>
+            <input type="hidden" class="" asp-for="ComplejoId">
+            <br />
+
+            <label for="" class="form-label">Comentarios:</label>
+            <input type="text" class="" asp-for="Comentarios" />
+            <span asp-validation-for="Comentarios" style="color:red"></span>
+            <br />
+
+            <label for="" class="form-label">Fecha Solicitada</label>
+            <input type="date" class="" asp-for="Fecha">
+            <span asp-validation-for="Fecha" style="color:red"></span>
+            <br />
+
+            <label for="" class="form-label">Asignar hora:</label>
+            <input type="time" class="" asp-for="Hora" value="00:00">
+            <span asp-validation-for="Hora" style="color:red"></span>
+            <br />
+            @if(Model != null)
+            {
+                <label for="" class="form-label">Asignar Doctor:</label>
+                <select class="" asp-for="DoctorId">
+                    @foreach (var doctor in Model.Doctores)
+                    {
+                        <option value="@doctor.Id">@doctor.Nombre @doctor.Apellidos</option>
+                    }
+                </select>
+            } else
+            {
+                <span style="color:red">No hay Doctores, Agrege uno para poder hacer esta parte</span>
+            }
+            
+            <br />
+
+            <button type="submit" class="btn btn-primary">Aceptar</button>
+
+            <button type="post" class="btn btn-secondary" asp-controller="Agenda" asp-action="back2">
+                Regresar
+            </button>
+
+            <button type="submit" class="btn btn-danger" asp-controller="Agenda" asp-action="CitasMRe">
+                Rechazar
+            </button>
+        </form>
+    </div>
+    <br />
+
+    <div class="dagenda">
+        <p>Agenda de Doctores</p>
+        @if (Model.AgendaDoctores != null)
+        {
+            @foreach (var doctor in Model.AgendaDoctores)
+            {
+                <div class="DocAgenList">
+                <p>Doctor: @doctor.NombreDoctor</p>
+                    @if (@doctor.Lista != null && @doctor.Lista.Count > 0)
+                    {
+                        @foreach (var agenda in doctor.Lista)
+                        {
+                        <div class="CitDoc">
+                            <p>Cita</p>
+                            <p>Dia:@agenda.Fecha.ToString("dd-MM-yyyy")</p>
+                            <p>Hora:@agenda.Hora.ToString("HH:mm:ss")</p>
+                            <p>Paciente:@agenda.PacienteNombre</p>
+                            <p>Complejo:@agenda.ComplejoNombre</p>
+                        </div>
+                        }
+                    }
+                    else
+                    {
+                        <p>Sin Citas</p>
+                    }
+                </div>
+            } 
+        }
+    </div>
+
+</div>

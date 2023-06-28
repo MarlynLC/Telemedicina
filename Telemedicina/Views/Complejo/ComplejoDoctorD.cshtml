@@ -1,0 +1,37 @@
+﻿@model Telemedicina.Models.Complejo.ComplejoUsuario
+@{
+    ViewData["Title"] = "Agregar Complejo Doctor";
+}
+
+<h1>Vincular Doctor a Complejo</h1>
+<form method="post" action="ComplejoDoctorD" class="mt-5">
+
+    <div class="formu">
+
+        <label for="" class="form-label">Nombre Doctor:</label>
+        <select class="" asp-for="DoctorId">
+            @foreach (var doctores in Model.Doctores)
+            {
+                <option value="@doctores.Id">@doctores.Nombre @doctores.Apellidos</option>
+            }
+        </select>
+        <br />
+    </div>
+
+    <div class="formu">
+        <label for="" class="form-label">Complejo</label>
+        <select class="" asp-for="ComplejoId">
+            @foreach (var complejos in Model.Complejos)
+            {
+                <option value="@complejos.Id">@complejos.Nombre</option>
+            }
+        </select>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Vincular</button>
+
+    <button type="post" class="btn btn-secondary" asp-controller="Complejo" asp-action="back2">
+        Cancelar
+    </button>
+</form>

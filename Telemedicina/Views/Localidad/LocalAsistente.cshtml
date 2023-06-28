@@ -1,0 +1,38 @@
+﻿@model List<Telemedicina.Models.Localidad.LocalAsistente>
+@{
+    ViewData["Title"] = "Asistente  Localidad";
+}
+
+<a class="nav-link text-dark" asp-area="" asp-controller="Localidad" asp-action="LocalAsistenteD">Agregar una Vinculacion</a>
+@if (ViewBag.Message != null)
+{
+    <span style="color:red">@ViewBag.Message</span>
+}
+
+<h1>Localidades-Asistente Locales Registrados</h1>
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Nombre Asistente Local</th>
+            <th>Nombre de Localidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var localidad in Model)
+            {
+                <tr>
+                    <th><a href="/Localidad/LocalAsistenteM/@localidad.Id">Modificar</a></th>
+                    <th>@localidad.Id</th>
+                    <th>@localidad.AsistenteNombre</th>
+                    <th>@localidad.LocalidadNombre</th>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+</div>

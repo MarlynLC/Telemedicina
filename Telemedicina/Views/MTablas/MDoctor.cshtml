@@ -1,0 +1,41 @@
+﻿@model List<Telemedicina.Models.TablasClase.MDoctorDatos>
+@{
+    ViewData["Title"] = "Historial Tabla Doctor";
+}
+
+<form method="post" action="back" class="mt-5">
+    <button type="post" class="btn btn-secondary" asp-controller="MTablas" asp-action="back">
+        Regresar
+    </button>
+</form>
+ 
+<h1>Tabla de Modificaciones en Doctores</h1>
+
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Doctor</th>
+            <th>Modificacion</th>
+            <th>Usuario</th>
+            <th>Rango</th>
+            <th>Fecha de Modificacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var mDoctor in Model)
+            {
+                <tr>
+                    <th>@mDoctor.Nombre</th>
+                    <th>@mDoctor.Tipo</th>
+                    <th>@mDoctor.Usuario</th>
+                    <td>@mDoctor.UsuarioTipo</td>
+                    <td>@mDoctor.Fecha.ToString("dd-MM-yyyy")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+</div>

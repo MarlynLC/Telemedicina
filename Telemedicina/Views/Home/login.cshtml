@@ -1,0 +1,100 @@
+﻿@model Telemedicina.Models.Session
+@{
+    ViewData["Title"] = "Bienvenido";
+
+}
+<style>
+    body {
+        background-color: #23BAC4; /* Cambia el color de la pagina despues de incicar secion */
+    }
+</style>
+
+<section class="btnoff">
+    <form method="post" asp-controller="Home" asp-action="cerrar" class="mt-5">
+        <button type="submit" class="btn btn-primary">Cerrar Sesion</button>
+    </form>
+</section>
+
+<h1>Bienvenido @Model.Nombre</h1>
+@if (ViewBag.Message != null)
+{
+    <span style="color:red">@ViewBag.Message</span>
+}
+
+@if (@Model.rango == "AsistLocal")
+{
+    <section class="contenedor">
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="menu">
+                <i class="">Icono Aqui</i>
+                <p><strong>Tablas de Personas</strong></p>
+            </a>
+        </div>
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="Citas">
+                <i class="">Icono Aqui</i>
+                <p><strong>Revizar Citas</strong></p>
+            </a>
+        </div>
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="MTablas" asp-action="Index">
+                <i class="">Icono Aqui</i>
+                <p><strong>Tablas de Historial</strong></p>
+            </a>
+        </div>
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Localidad" asp-action="menu">
+                <i class="">Icono aqui</i>
+                <p><strong>Tablas de Localidad</strong></p>
+            </a>
+        </div>
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Complejo" asp-action="menu">
+                <i class="">Icono aqui</i>
+                <p><strong>Tablas de Complejos</strong></p>
+            </a>
+        </div>
+    </section>
+}
+
+@if (@Model.rango == "Doctor")
+{
+    <section class="contenedor">
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">
+                <i class="">Icono Aqui</i>
+                <p><strong>Ver Pacientes</strong></p>
+            </a>
+        </div>
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="AgendaDt">
+                <i class="">Icono Aqui</i>
+                <p><strong>Ver Agenda</strong></p>
+            </a>
+        </div>
+    </section>
+}
+
+@if (@Model.rango == "AsistRemoto")
+{
+    <section class="contenedor">
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="Index">
+                <i class="">Icono Aqui</i>
+                <p><strong>Ver Pacientes</strong></p>
+            </a>
+        </div>
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="Index">
+                <i class="">Icono Aqui</i>
+                <p><strong>Agendar Citas</strong></p>
+            </a>
+        </div>
+        <div class="bloque">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="AgendaAR">
+                <i class="">Icono Aqui</i>
+                <p><strong>Ver Agenda</strong></p>
+            </a>
+        </div>
+    </section>
+}

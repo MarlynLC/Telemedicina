@@ -1,0 +1,22 @@
+﻿<span style="color:red">@ViewBag.Message</span>
+
+<form method="post" action="back" class="mt-5">
+    <button type="post" class="btn btn-secondary" asp-controller="Home" asp-action="index">
+        Regresar
+    </button>
+</form>
+
+<section class="contenedor">
+    <div class="bloque">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Localidad" asp-action="LocalAsistente">
+            <i class="">Icono aqui</i>
+            <p><strong>Ver Asistenetes Locales con Localidades</strong></p>
+        </a>
+    </div>
+    <div class="bloque">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Localidad" asp-action="Index">
+            <i class="">Icono Aqui</i>
+            <p><strong>Ver Localidades</strong></p>
+        </a>
+    </div>
+</section>

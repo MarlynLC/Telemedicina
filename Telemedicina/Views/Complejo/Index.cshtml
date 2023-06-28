@@ -1,0 +1,39 @@
+﻿@model List<Telemedicina.Models.Complejo.Complejo>
+@{
+    ViewData["Title"] = "Complejo";
+}
+
+<a class="nav-link text-dark" asp-area="" asp-controller="Complejo" asp-action="Complejod">Agregar un Complejo</a>
+@if (ViewBag.Message != null)
+{
+        <span style="color:darkseagreen">@ViewBag.Message</span>
+}
+<h1>Complejos Registrados</h1>
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Ubicacion</th>
+            <th>Localidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var complejo in Model)
+            {
+                <tr>
+                    <th><a href="Complejo/Complejom/@complejo.Id">Modificar</a></th>
+                    <th>@complejo.Id</th>
+                    <th>@complejo.Nombre</th>
+                    <th>@complejo.Ubicacion</th>
+                    <th>@complejo.Localidad</th>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+</div>

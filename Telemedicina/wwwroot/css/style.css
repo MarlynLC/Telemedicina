@@ -1,0 +1,322 @@
+﻿body {
+    background-color:white;
+    align-content: center;
+}
+
+/* ------------------------------- Login ------------------------------ */
+.loggin {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    
+}
+
+.logginform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    
+}
+
+.loggintext {
+    margin: 5px;
+    font-size: 25px;
+    
+}
+
+.loggincampo {
+    margin: 5px;
+    border-radius: 70px;
+ 
+}
+
+.btn{
+    margin: 5px;
+    width: fit-content;
+       background-color: #000000
+}
+
+
+
+
+/* ------------------------------- Boton Desloggueo ------------------------------ */
+
+.btnoff {
+    display: flex;
+    height: 50px;
+    justify-content: flex-end;
+}
+
+/* ------------------------------- Menus ------------------------------ */
+.contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap:1rem;
+    margin-top: 40px;
+    padding: 1rem;
+    width: 100%;
+    background: #eae8e8
+
+}
+.bloque {
+    background: #d5d4d4;
+    min-height: 15rem;
+    padding: 20px;
+    justify-content: space-around;
+    
+}
+.bloque a {
+    align-items: center;
+    text-align: center;
+    height:100%;
+    border: 1px solid white;
+}
+
+/* ------------------------------- Formularios ------------------------------ */
+.contenformu {
+    position: relative;
+    width: 100%;
+    border-radius: 6px;
+    padding: 30px;
+    margin: 0 15px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.contenformu header{
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+}
+
+.contenformu header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 200px;
+    border-radius: 8px;
+    background-color: #4070f1;
+}
+
+.contenformu form {
+    position: relative;
+    margin-top: 16px;
+    min-height:490px;
+}
+
+.contenformu form .datospersona{
+    margin-top: 30px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 8px;
+}
+
+.contenformu form .botones{
+    max-width: 400px;
+}
+
+.contenformu form .tittle{
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #333;
+}
+
+.contenformu form .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.form .fields .input-field{
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+
+.input-field label {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+
+.input-field input{
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+
+.input-field input:is(:focus, :valid) {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+
+.input-field input[type="date"]{
+    color: #333;
+}
+
+.input-field input[type="date"]:valid{
+    color: #707070;
+}
+
+.contenformu form button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    border: none;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    margin: 25px 0;
+}
+
+.formu {
+    border: 2px solid black;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.docform{
+    display: flex;
+}
+
+.dtable {
+    border: 2px solid black;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.vacm {
+    flex-direction: row;
+    max-height: 60vh;
+    display: flex;
+}
+
+/* ------------------------------- Agenda ------------------------------ */
+
+.formuagenda {
+    border: 2px solid black;
+    margin: 5px;
+    padding: 5px;
+    min-width: 600px;
+    max-width: 600px;
+    display: flex;
+}
+
+.dagenda {
+    border: 2px solid black;
+    margin: 5px;
+    padding: 5px;
+    min-width: 400px;
+    max-width: 400px;
+    flex-direction: column;
+    display: flex;
+    overflow: scroll;
+}
+
+.DocAgenList {
+    border: 2px solid black;
+    margin: 5px;
+    padding: 5px;
+}
+
+.CitDoc {
+    border: 2px solid black;
+    margin: 5px;
+    padding: 5px;
+}
+
+/* ------------------------------- VideoConferencia ------------------------------ */
+.roombox {
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+}
+.comentario {
+    border: 2px solid lightblue;
+    background-color: rgba(50,50,100,0.1);
+    border-radius: 5px;
+    margin: 15px;
+    padding: 15px;
+    max-width: 450px;
+}
+.textocomentario {
+    max-height: 100px;
+    max-width: 250;
+}
+
+.receta {
+    border: 2px solid lightblue;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 15px;
+    height: 105px;
+    max-width: 450px;
+}
+
+.receta .btn-primary{
+    margin-top: 0;  
+    margin-bottom: 10px;
+}
+
+.receta p {
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* ------------------------------- Tablas ------------------------------ */
+.divtable {
+    overflow-x: scroll;
+}
+
+.table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.8em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+
+.table thead tr{
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table th, 
+.table td{
+    padding: 12px 15px;
+}
+
+.table tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+.table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.table tbody tr:last-of-type{
+    border-bottom: 2px solid #009879;
+}

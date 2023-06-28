@@ -1,0 +1,37 @@
+﻿@model Telemedicina.Models.Localidad.LocalAsistente
+@{
+    ViewData["Title"] = "Asignacion Localidad con Asistente Local";
+}
+
+<h1>Vincular Asistente Local a una Localidad</h1>
+<form method="post" action="LocalAsistenteD" class="mt-5">
+
+    <div class="formu">
+
+        <label for="" class="form-label">Nombre Asistente Local:</label>
+        <select class="form-control" asp-for="AsistenteLID">
+            @foreach (var doctores in Model.AsistentesLocales)
+            {
+                <option value="@doctores.Id">@doctores.Nombre @doctores.Apellidos</option>
+            }
+        </select>
+        <br />
+    </div>
+
+    <div class="formu">
+        <label for="" class="form-label">Localidades</label>
+        <select class="form-control" asp-for="LocalidadID">
+            @foreach (var complejos in Model.Localidades)
+            {
+                <option value="@complejos.Id">@complejos.Nombre</option>
+            }
+        </select>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Vincular</button>
+
+    <button type="post" class="btn btn-secondary" asp-controller="Localidad" asp-action="back2">
+        Cancelar
+    </button>
+</form>

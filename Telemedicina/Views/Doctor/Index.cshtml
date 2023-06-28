@@ -1,0 +1,58 @@
+﻿@model List<Telemedicina.Models.Dominio.Doctor>
+@{
+    ViewData["Title"] = "Doctores";
+}
+<h1>Doctores</h1>
+<a class="nav-link text-dark" asp-area="" asp-controller="Doctor" asp-action="agregardoctor">Agregar Doctor</a>
+<br />
+@if (ViewBag.Message != null)
+{
+    <span style="color:darkseagreen">@ViewBag.Message</span>
+}
+
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Imagen</th>
+            <th>Doctor</th>
+            <th>Sexo</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Tipo de Sangre</th>
+            <th>CURP</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+            <th>Matricula</th>
+            <th>Especialidad</th>
+            <th>Jerarquia</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null){
+            @foreach (var doctor in Model)
+            {
+                if (@doctor.Visilbe == "Si")
+                {
+                    <tr>
+                        <th><a href="Doctor/modificardoctor/@doctor.Id">Modificar</a></th>
+                        <th><img src="@doctor.Imagen" width="50" height="50" /></th>
+                        <th>@doctor.Nombre @doctor.Apellidos</th>
+                        <td>@doctor.Sexo</td>
+                        <td>@doctor.Nacimiento.ToString("dd-MM-yyyy")</td>
+                        <th>@doctor.Sangre</th>
+                        <th>@doctor.Curp</th>
+                        <td>@doctor.Telefono</td>
+                        <td>@doctor.Correo</td>
+                        <td>@doctor.Matricula</td>
+                        <th>@doctor.Especialidad</th>
+                        <td>@doctor.Jerarquia</td>
+                        <th>@doctor.Password</th>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+</div>

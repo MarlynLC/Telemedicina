@@ -1,0 +1,57 @@
+﻿@model List<Telemedicina.Models.Dominio.AsistenteRemoto>
+@{
+    ViewData["Title"] = "Asistente Remoto";
+}
+
+<h1>Asistentes Remoto</h1>
+<a class="nav-link text-dark" asp-area="" asp-controller="AsistenteRemoto" asp-action="agregarasistenteremoto">Agregar Asistente Remoto</a>
+<br />
+@if (ViewBag.Message != null)
+{
+        <span style="color:darkseagreen">@ViewBag.Message</span>
+}
+
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Imagen</th>
+            <th>Asistente Remoto</th>
+            <th>Sexo</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Tipo de Sangre</th>
+            <th>CURP</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+            <th>Comentarios</th>
+            <th>Fecha de Ingreso</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model != null){
+            @foreach (var asistenteremoto in Model)
+            {
+                if(asistenteremoto.Visilbe == "Si")
+                {
+                    <tr>
+                        <th><a href="AsistenteRemoto/modificarasistenteremoto/@asistenteremoto.Id">Modificar</a></th>
+                        <th><img src="@asistenteremoto.Imagen" width="50" height="50" /></th>
+                        <th>@asistenteremoto.Nombre @asistenteremoto.Apellidos</th>
+                        <td>@asistenteremoto.Sexo</td>
+                        <td>@asistenteremoto.Nacimiento.ToString("dd-MM-yyyy")</td>
+                        <th>@asistenteremoto.Sangre</th>
+                        <th>@asistenteremoto.Curp</th>
+                        <td>@asistenteremoto.Telefono</td>
+                        <td>@asistenteremoto.Correo</td>
+                        <td>@asistenteremoto.Comentarios</td>
+                        <td>@asistenteremoto.FechaIngreso.ToString("dd-MM-yyyy")</td>
+                        <th>@asistenteremoto.Password</th>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+</div>

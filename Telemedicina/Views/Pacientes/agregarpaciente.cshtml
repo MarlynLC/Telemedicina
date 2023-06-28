@@ -1,0 +1,215 @@
+﻿@model Telemedicina.Models.PacienteFormularios.agregarPacienteViewModel
+@{
+    ViewData["Title"] = "Agregar Paciente";
+}
+
+<div class="contenformu">
+    <header>Agregar un Paciente</header>
+
+    <form method="post" action="agregarpaciente" class="mt-5" enctype="multipart/form-data">
+
+        <div class="datospersona">
+            <span class="tittle">Datos Personales</span>
+
+            <div class="fields">
+                <div class="input-field">
+                    <label for="" class="form-label">Nombres</label>
+                    <input type="text" class="" asp-for="Nombre" placeholder="Pablo Miguel">
+                    <span asp-validation-for="Nombre" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Apellidos</label>
+                    <input type="text" class="" asp-for="Apellidos" placeholder="Lopez Portillo"/>
+                    <span asp-validation-for="Apellidos" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Sexo</label>
+                    <select class="" asp-for="Sexo">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Tipo de Sangre</label>
+                    <select class="" asp-for="Sangre">
+                        <option value="No se conoce">No se conoce</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="" asp-for="Nacimiento">
+                    <span asp-validation-for="Nacimiento" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">CURP</label>
+                    <input type="text" class="" asp-for="Curp" placeholder="AAAA111111AAAAAA4">
+                    <span asp-validation-for="Curp" style="color:red"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="datospersona">
+            <span class="tittle">Datos de Ubicacion</span>
+
+            <div class="fields">
+                <div class="input-field">
+                    <label for="" class="form-label">Domicilio</label>
+                    <input type="text" class="" asp-for="Domicilio">
+                    <span asp-validation-for="Domicilio" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Estado</label>
+                    <select class="" asp-for="Estado">
+                        <option value="Aguascalientes">Aguascalientes</option>
+                        <option value="Baja California">Baja California</option>
+                        <option value="Baja California Sur">Baja California Sur</option>
+                        <option value="Campeche">Campeche</option>
+                        <option value="Chiapas">Chiapas</option>
+                        <option value="Chihuahua">Chihuahua</option>
+                        <option value="Ciudad de Mexico">Ciudad de Mexico</option>
+                        <option value="Coahuila">Coahuila</option>
+                        <option value="Colima">Colima</option>
+                        <option value="Durango">Durango</option>
+                        <option value="Estado de Mexico">Estado de Mexico</option>
+                        <option value="Guanajuato">Guanajuato</option>
+                        <option value="Guerrero">Guerrero</option>
+                        <option value="Hidalgo">Hidalgo</option>
+                        <option value="Jalisco">Jalisco</option>
+                        <option value="Michoacan">Michoacan</option>
+                        <option value="Morelos">Morelos</option>
+                        <option value="Nayarit">Nayarit</option>
+                        <option value="Nuevo Leon">Nuevo Leon</option>
+                        <option value="Oaxaca">Oaxaca</option>
+                        <option value="Puebla">Puebla</option>
+                        <option value="Queretaro">Queretaro</option>
+                        <option value="Quintana Roo">Quintana Roo</option>
+                        <option value="San Luis Potosi">San Luis Potosi</option>
+                        <option value="Sinaloa">Sinaloa</option>
+                        <option value="Sonora">Sonora</option>
+                        <option value="Tabasco">Tabasco</option>
+                        <option value="Tamaulipas">Tamaulipas</option>
+                        <option value="Tlaxcala">Tlaxcala</option>
+                        <option value="Veracruz">Veracruz</option>
+                        <option value="Yucantan">Yucantan</option>
+                        <option value="Zacatecas">Morelos</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Municipio</label>
+                    <select class="" asp-for="Municipio">
+                        <option value="Armeria">Armeria</option>
+                        <option value="Colima">Colima</option>
+                        <option value="Comala">Comala</option>
+                        <option value="Coquimatlan">Coquimatlan</option>
+                        <option value="Cuautemoc">Cuautemoc</option>
+                        <option value="Ixtlahuacan">Ixtlahuacan</option>
+                        <option value="Manzanillo">Manzanillo</option>
+                        <option value="Minatitlan">Minatitlan</option>
+                        <option value="Tecoman">Tecoman</option>
+                        <option value="Villa de Alvarez">Villa de Alvarez</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Localidad</label>
+                    <select class="" asp-for="Localidad">
+                        @foreach (var localidades in Model.Localidades)
+                        {
+                            <option value="@localidades.Nombre">@localidades.Nombre</option>
+                        }
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Codigo Postal</label>
+                    <input type="text" class="" asp-for="CodigoPostal">
+                    <span asp-validation-for="CodigoPostal" style="color:red"></span>
+                    <br />
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Numero de Telefono</label>
+                    <input type="text" class="" asp-for="Telefono">
+                    <span asp-validation-for="Telefono" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Correo Electronico</label>
+                    <input type="email" class="" asp-for="Correo">
+                    <span asp-validation-for="Correo" style="color:red"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="datospersona">
+            <span class="tittle">Datos Academicos</span>
+
+            <div class="fields">
+                <div class="input-field">
+                    <label for="" class="form-label">Escolaridad</label>
+                    <select class="" asp-for="Escolaridad">
+                        <option value="Ninguna">Ninguna</option>
+                        <option value="Primaria">Primaria</option>
+                        <option value="Secundaria">Secundaria</option>
+                        <option value="Bachillerato">Bachillerato</option>
+                        <option value="Universidad">Universidad</option>
+                        <option value="Posgrado">Posgrado</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Ocupacion</label>
+                    <select class="" asp-for="Ocupacion">
+                        <option value="Desempleado">Desempleado</option>
+                        <option value="Empleado">Empleado</option>
+                        <option value="Estudiante">Estudiante</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Nombre de Familiar</label>
+                    <input type="text" class="" asp-for="Familiares">
+                    <span asp-validation-for="Familiares" style="color:red"></span>
+                </div>
+                <div class="input-field">
+                    <label for="" class="form-label">Padecimientos Hereditarios o Familiares</label>
+                    <input type="text" class="" asp-for="Hereditarios">
+                    <span asp-validation-for="Hereditarios" style="color:red"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="datospersona">
+            <span class="tittle">Imagen del Asistente</span>
+
+            <div class="fields">
+                <div class="input-field">
+                    <span style="color:red">Solo formato .jpg</span>
+                    <br />
+                    <input type="file" class="" asp-for="File">
+                    <span asp-validation-for="File" style="color:red">
+                        @if (ViewBag.Message != null)
+                        {
+                            @ViewBag.Message
+                        }
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="botones">
+            <div class="datospersona">
+                <div class="fields">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+
+                    <button type="post" class="btn btn-secondary" asp-controller="Pacientes" asp-action="back">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div> 
+
+    </form>
+</div>

@@ -1,0 +1,73 @@
+﻿@model Telemedicina.Models.Receta.Recetashow;
+@{
+    Layout = null;
+    ViewData["Title"] = "Receta N: X";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/rec.css">
+    </environment>
+</head>
+
+<body>
+<div class="recetaBox">
+    <div class="rdocdatos">
+        <div class="rdocname">
+            <h1>Dr. @Model.DocNombre</h1>
+        </div>
+
+        <div class="rdocinfo">
+            <p class="rdocrang">@Model.DocRango </p>
+            <p class="rdoccelu">Celula Profecional: @Model.DocCelula</p>
+        </div>
+
+        <div class="rdocinfoescue">
+            <p class="rdocIns">@Model.DocEscuela</p>
+        </div>
+    </div>
+
+    <div class="rpasdatos">
+            <div class="rrecfe">
+                <p class="rrecfecha">@Model.fecha</p>
+            </div>
+        <div class="rpassinfo">
+            <p class="rpasnom">@Model.PacNombre</p>
+            <p class="rpasedad">Edad: @Model.PacEdad Años</p>
+        </div>
+        
+    </div>
+
+    <div class="rrecdatos">
+        <div class="rrecinfo">
+            <div class="rrecinfomeds">
+                @foreach (var citatemporal in Model.Items)
+                {
+                        <p>@citatemporal.Medicamento - @citatemporal.Dosis - @citatemporal.Fecuencia </p>
+                }
+            </div>
+            <div class="rrecinfopres">
+                <p>Prescripcion</p>
+                <p>@Model.Prescripcion</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="rmodulo">
+        <div class="rmoduInfo">
+            <p>@Model.ModuloNombre</p>
+            <p>@Model.ModuloUbicacion</p>
+        </div>
+        <div class="rdocfirma">
+            <img class="docfirma" alt="Firma del Doctor" src="@Model.DocFirma" style="width:100px; height:100px;" />
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+    

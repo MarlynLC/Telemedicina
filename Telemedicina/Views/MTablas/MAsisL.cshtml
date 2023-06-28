@@ -1,0 +1,41 @@
+﻿@model List<Telemedicina.Models.TablasClase.MAsisLDatos>
+@{
+    ViewData["Title"] = "Historial Tabla Asistente Local";
+}
+<form method="post" action="back" class="mt-5">
+    <button type="post" class="btn btn-secondary" asp-controller="MTablas" asp-action="back">
+        Regresar
+    </button>
+</form>
+ 
+
+<h1>Tabla de Modificaciones en Asistentes Locales</h1>
+
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Asistente Local</th>
+            <th>Modificacion</th>
+            <th>Usuario</th>
+            <th>Rango</th>
+            <th>Fecha de Modificacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var mAsistLocal in Model)
+            {
+                <tr>
+                    <th>@mAsistLocal.Nombre</th>
+                    <th>@mAsistLocal.Tipo</th>
+                    <th>@mAsistLocal.Usuario</th>
+                    <td>@mAsistLocal.UsuarioTipo</td>
+                    <td>@mAsistLocal.Fecha.ToString("dd-MM-yyyy")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+</div>

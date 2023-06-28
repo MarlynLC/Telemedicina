@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Complejo Menu";
+}
+<form method="post" action="back" class="mt-5">
+    <button type="post" class="btn btn-secondary" asp-controller="Home" asp-action="index">
+        Regresar
+    </button>
+</form>
+
+<section class="contenedor">
+    <div class="bloque">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Complejo" asp-action="ComplejoDoctor">
+            <i class="">Icono aqui</i>
+            <p><strong>Doctor Complejos</strong></p>
+        </a>
+    </div>
+    <div class="bloque">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Complejo" asp-action="ComplejoAsistR">
+            <i class="">Icono Aqui</i>
+            <p><strong>Asistente Remoto Complejos</strong></p>
+        </a>
+    </div>
+    <div class="bloque">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Complejo" asp-action="Index">
+            <i class="">Icono Aqui</i>
+            <p><strong>Complejo</strong></p>
+        </a>
+    </div>
+</section>

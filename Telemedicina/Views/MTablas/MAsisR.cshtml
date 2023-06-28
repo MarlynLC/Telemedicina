@@ -1,0 +1,41 @@
+﻿@model List<Telemedicina.Models.TablasClase.MAsisRDatos>
+@{
+    ViewData["Title"] = "Historial Tabla Asistente Remoto";
+}
+
+<form method="post" action="back" class="mt-5">
+    <button type="post" class="btn btn-secondary" asp-controller="MTablas" asp-action="back">
+        Regresar
+    </button>
+</form> 
+
+<h1>Tabla de Modificaciones en Asistentes Remotos</h1>
+
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Asistnete Remoto</th>
+            <th>Modificacion</th>
+            <th>Usuario</th>
+            <th>Rango</th>
+            <th>Fecha de Nacimiento</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var mAsistRemoto in Model)
+            {
+                <tr>
+                    <th>@mAsistRemoto.Nombre</th>
+                    <th>@mAsistRemoto.Tipo</th>
+                    <th>@mAsistRemoto.Usuario</th>
+                    <td>@mAsistRemoto.UsuarioTipo</td>
+                    <td>@mAsistRemoto.Fecha.ToString("dd-MM-yyyy")</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+</div>

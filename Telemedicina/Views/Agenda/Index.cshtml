@@ -1,0 +1,117 @@
+﻿@model List<Telemedicina.Models.Agenda.CitaTemp>
+@{
+}
+
+<a class="nav-link text-dark" asp-area="" asp-controller="Agenda" asp-action="CitaTD">Solicitar Cita</a>
+@if (ViewBag.Message != null)
+{
+    <span style="color:darkseagreen">@ViewBag.Message</span>
+}
+
+<div class="divtable">
+    <h1>Citas Pendientes de Confirmar </h1>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Estado</th>
+                <th>Dia de Registro</th>
+                <th>Dia Solicitado</th>
+                <th>Paciente</th>
+                <th>Comentario</th>
+                <th>Complejo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var citatemporal in Model)
+                {
+                    @if (citatemporal.Estado == "Pendiente")
+                    {
+                        <tr>
+                            <th>@citatemporal.Estado</th>
+                            <th>@citatemporal.FechaCreacion.ToString("dd-MM-yyyy")</th>
+                            <td>@citatemporal.Fecha.ToString("dd-MM-yyyy")</td>
+                            <th>@citatemporal.NombrePaciente</th>
+                            <th>@citatemporal.Comentarios</th>
+                            <th>@citatemporal.NombreComplejo</th>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="divtable">
+    <h1>Citas Aceptadas </h1>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Estado</th>
+                <th>Dia de Registro</th>
+                <th>Dia Solicitado</th>
+                <th>Paciente</th>
+                <th>Comentario</th>
+                <th>Complejo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var citatemporal in Model)
+                {
+                    @if (citatemporal.Estado == "Aceptada")
+                    {
+                        <tr>
+                            <th>@citatemporal.Estado</th>
+                            <th>@citatemporal.FechaCreacion.ToString("dd-MM-yyyy")</th>
+                            <td>@citatemporal.Fecha.ToString("dd-MM-yyyy")</td>
+                            <th>@citatemporal.NombrePaciente</th>
+                            <th>@citatemporal.Comentarios</th>
+                            <th>@citatemporal.NombreComplejo</th>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="divtable">
+    <h1>Citas Rechazadas </h1>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Estado</th>
+                <th>Dia de Registro</th>
+                <th>Dia Solicitado</th>
+                <th>Paciente</th>
+                <th>Comentario</th>
+                <th>Complejo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var citatemporal in Model)
+                {
+                    @if (citatemporal.Estado == "Rechazada")
+                    {
+                        <tr>
+                            <th>@citatemporal.Estado</th>
+                            <th>@citatemporal.FechaCreacion.ToString("dd-MM-yyyy")</th>
+                            <td>@citatemporal.Fecha.ToString("dd-MM-yyyy")</td>
+                            <th>@citatemporal.NombrePaciente</th>
+                            <th>@citatemporal.Comentarios</th>
+                            <th>@citatemporal.NombreComplejo</th>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

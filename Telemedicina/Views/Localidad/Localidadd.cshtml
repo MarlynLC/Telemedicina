@@ -1,0 +1,73 @@
+﻿@model Telemedicina.Models.Localidad.Localidadd
+@{
+    ViewData["Title"] = "Agregar una Localidad";
+}
+
+<h1>Agregar Localidad</h1>
+<form method="post" action="Localidadd" class="mt-5">
+
+    <div class="formu">
+        <label for="" class="form-label">Nombre de Localidad:</label>
+        <input type="text" class="" asp-for="Nombre" />
+        <span asp-validation-for="Nombre" style="color:red"></span>
+        <br />
+    </div>
+
+    <div class="formu">
+        <label for="" class="form-label">Municipio</label>
+        <select class="" asp-for="Municipio">
+            <option value="Armeria">Armeria</option>
+            <option value="Colima">Colima</option>
+            <option value="Comala">Comala</option>
+            <option value="Coquimatlan">Coquimatlan</option>
+            <option value="Cuautemoc">Cuautemoc</option>
+            <option value="Ixtlahuacan">Ixtlahuacan</option>
+            <option value="Manzanillo">Manzanillo</option>
+            <option value="Minatitlan">Minatitlan</option>
+            <option value="Tecoman">Tecoman</option>
+            <option value="Villa de Alvarez">Villa de Alvarez</option>
+        </select>
+
+        <label for="" class="form-label">Estado</label>
+        <select class="" asp-for="Estado">
+            <option value="Aguascalientes">Aguascalientes</option>
+            <option value="Baja California">Baja California</option>
+            <option value="Baja California Sur">Baja California Sur</option>
+            <option value="Campeche">Campeche</option>
+            <option value="Chiapas">Chiapas</option>
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Ciudad de Mexico">Ciudad de Mexico</option>
+            <option value="Coahuila">Coahuila</option>
+            <option value="Colima">Colima</option>
+            <option value="Durango">Durango</option>
+            <option value="Estado de Mexico">Estado de Mexico</option>
+            <option value="Guanajuato">Guanajuato</option>
+            <option value="Guerrero">Guerrero</option>
+            <option value="Hidalgo">Hidalgo</option>
+            <option value="Jalisco">Jalisco</option>
+            <option value="Michoacan">Michoacan</option>
+            <option value="Morelos">Morelos</option>
+            <option value="Nayarit">Nayarit</option>
+            <option value="Nuevo Leon">Nuevo Leon</option>
+            <option value="Oaxaca">Oaxaca</option>
+            <option value="Puebla">Puebla</option>
+            <option value="Queretaro">Queretaro</option>
+            <option value="Quintana Roo">Quintana Roo</option>
+            <option value="San Luis Potosi">San Luis Potosi</option>
+            <option value="Sinaloa">Sinaloa</option>
+            <option value="Sonora">Sonora</option>
+            <option value="Tabasco">Tabasco</option>
+            <option value="Tamaulipas">Tamaulipas</option>
+            <option value="Tlaxcala">Tlaxcala</option>
+            <option value="Veracruz">Veracruz</option>
+            <option value="Yucantan">Yucantan</option>
+            <option value="Zacatecas">Morelos</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agregar</button>
+
+    <button type="post" class="btn btn-secondary" asp-controller="Localidad" asp-action="back">
+        Cancelar
+    </button>
+</form>

@@ -1,0 +1,38 @@
+﻿@model Telemedicina.Models.Complejo.Complejod
+@{
+    ViewData["Title"] = "Complejo Modificar";
+}
+
+<h1>Agregar Complejo</h1>
+<form method="post" action="Complejom" class="mt-5">
+
+    <div class="formu">
+        <input type="hidden" class="form-control" asp-for="Id">
+
+        <label for="" class="form-label">Nombre del Complejo:</label>
+        <input type="text" class="" asp-for="Nombre" />
+        <span asp-validation-for="Nombre" style="color:red"></span>
+        <br />
+
+        <label for="" class="form-label">Ubicacion del Complejo:</label>
+        <input type="text" class="" asp-for="Ubicacion" />
+        <span asp-validation-for="Ubicacion" style="color:red"></span>
+        <br />
+    </div>
+
+    <div class="formu">
+        <label for="" class="form-label">Localidad</label>
+        <select class="" asp-for="Localidadid">
+            @foreach (var localidades in Model.Localidades)
+            {
+                <option value="@localidades.Id">@localidades.Nombre</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+
+    <button type="post" class="btn btn-secondary" asp-controller="Complejo" asp-action="back">
+        Cancelar
+    </button>
+</form>

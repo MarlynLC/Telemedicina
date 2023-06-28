@@ -1,0 +1,38 @@
+﻿@model Telemedicina.Models.Complejo.ComplejoUsuario
+@{
+    ViewData["Title"] = "Modificar Complejo Asistente";
+}
+
+<h1>Actualizar Asistente Remoto a Complejo</h1>
+<form method="post" action="ComplejoAsistRM" class="mt-5">
+
+    <div class="formu">
+        <input type="hidden" class="form-control" asp-for="Id">
+
+        <label for="" class="form-label">Nombre Asistente Remoto:</label>
+        <select class="" asp-for="AsistenteRemotoId">
+            @foreach (var asistentesRemotos in Model.AsistenteRemotos)
+            {
+                <option value="@asistentesRemotos.Id">@asistentesRemotos.Nombre @asistentesRemotos.Apellidos</option>
+            }
+        </select>
+        <br />
+    </div>
+
+    <div class="formu">
+        <label for="" class="form-label">Complejo</label>
+        <select class="" asp-for="ComplejoId">
+            @foreach (var complejos in Model.Complejos)
+            {
+                <option value="@complejos.Id">@complejos.Nombre</option>
+            }
+        </select>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Actualizar Vinculacion</button>
+
+    <button type="post" class="btn btn-secondary" asp-controller="Complejo" asp-action="back3">
+        Cancelar
+    </button>
+</form>

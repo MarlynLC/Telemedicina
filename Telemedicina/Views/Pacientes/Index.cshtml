@@ -1,0 +1,62 @@
+﻿@model List<Telemedicina.Models.Dominio.Paciente>
+@{
+    ViewData["Title"] = "Paciente";
+}
+<h1>Pacientes</h1>
+<a class="nav-link text-dark" asp-area="" asp-controller="Pacientes" asp-action="agregarpaciente">Agregar Paciente</a>
+<br />
+@if(ViewBag.Message != null)
+{
+    <p style="color:darkseagreen">@ViewBag.Message</p>
+}
+<div class="divtable">
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Imagen</th>
+            <th>Paciente</th>
+            <th>Sexo</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Sangre</th>
+            <th>CURP</th>
+            <th>Localidad</th>
+            <th>Municipio</th>
+            <th>Estado</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+            <th>Escolaridad</th>
+            <th>Familiares</th>
+            <th>Ocupacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var paciente in Model)
+            {
+                if (@paciente.Visilbe == "Si")
+                {
+                    <tr>
+                        <th><a href="Pacientes/modificarpaciente/@paciente.Id">Modificar</a></th>
+                        <th><img src="@paciente.Imagen" width="50" height="50" /></th>
+                        <th>@paciente.Nombre @paciente.Apellidos</th>
+                        <td>@paciente.Sexo</td>
+                        <td>@paciente.Nacimiento.ToString("dd-MM-yyyy")</td>
+                        <th>@paciente.Sangre</th>
+                        <th>@paciente.Curp</th>
+                        <td>@paciente.Localidad</td>
+                        <td>@paciente.Municipio</td>
+                        <td>@paciente.Estado</td>
+                        <td>@paciente.Telefono</td>
+                        <td>@paciente.Correo</td>
+                        <td>@paciente.Escolaridad</td>
+                        <th>@paciente.Familiares</th>
+                        <td>@paciente.Ocupacion</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+</div>

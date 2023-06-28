@@ -1,0 +1,40 @@
+﻿@model List<Telemedicina.Models.Dominio.Localidad>
+@{
+    ViewData["Title"] = "Localidad";
+}
+
+<a class="nav-link text-dark" asp-area="" asp-controller="Localidad" asp-action="Localidadd">Agregar una Localidad</a>
+
+@if (ViewBag.Message != null)
+{
+    <span style="color:red">@ViewBag.Message</span>
+}
+<div class="divtable">
+<h1>Localidades Registradas</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Id</th>
+            <th>Localidad</th>
+            <th>Municipio</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var localidad in Model)
+            {
+                <tr>
+                    <th><a href="Localidad/Localidadm/@localidad.Id">Modificar</a></th>
+                    <th>@localidad.Id</th>
+                    <th>@localidad.Nombre</th>
+                    <th>@localidad.Municipio</th>
+                    <th>@localidad.Estado</th>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+</div>

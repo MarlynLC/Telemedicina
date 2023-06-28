@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Historial Menu";
+}
+@if (ViewBag.Message != null)
+{
+    <span style="color:red">@ViewBag.Message</span>
+}
+
+<form method="post" action="back" class="mt-5">
+    <button type="post" class="btn btn-secondary" asp-controller="Home" asp-action="index">
+        Regresar
+    </button>
+</form>
+
+<section class="contenedor">
+    <div class="bloque">
+        <a class="nav-link text-dark" asp-area="" asp-controller="MTablas" asp-action="MPaciente">
+            <i class="">Icono aqui</i>
+            <p><strong>Modificacion Pacientes</strong></p>
+        </a>
+    </div>
+    <div class="bloque">
+        <a class="nav-link text-dark" asp-area="" asp-controller="MTablas" asp-action="MDoctor">
+            <i class="">Icono Aqui</i>
+            <p><strong>Modificacion Doctores</strong></p>
+        </a>
+    </div>
+    <div class="bloque">
+        <a class="nav-link text-dark" asp-area="" asp-controller="MTablas" asp-action="MAsisL">
+            <i class="">Icono Aqui</i>
+            <p><strong>Modificacion Asistentes Locales</strong></p>
+        </a>
+    </div>
+    <div class="bloque">
+        <a class="nav-link text-dark" asp-area="" asp-controller="MTablas" asp-action="MAsisR">
+            <i class="">Icono aqui</i>
+            <p><strong>Modificacion Asistentes Remotos</strong></p>
+        </a>
+    </div>
+</section>
